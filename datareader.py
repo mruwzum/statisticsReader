@@ -18,7 +18,7 @@ tvidac           = pd.read_excel(GAcatagolo,sheet_name='Valor tiempo de vida cli
 
 # lectura Google Analytics Tienda EBA
 
-GAtienda = pd.ExcelFile(r'C:\Users\nurit\Dropbox\Estadísticas EBA Nuria\Mi trabajo\Google_Analytics-Tienda_EBA.xlsx')
+GAtienda = pd.ExcelFile(r'Datos\Google_Analytics-Catálogo_EBA.xlsx')
 
 generalt         = pd.read_excel(GAtienda,sheet_name='Visión general')
 usuariosActivost = pd.read_excel(GAtienda,sheet_name='Usuarios activos')
@@ -30,9 +30,10 @@ ubit             = pd.read_excel(GAtienda,sheet_name='Ubicación')
 tvidat           = pd.read_excel(GAtienda,sheet_name='Valor tiempo de vida cliente')
 
 
+
 # lectura Facebook Analytics
 
-fbanalytics = pd.ExcelFile(r'C:\Users\nurit\Dropbox\Estadísticas EBA Nuria\Mi trabajo\Facebook_Analytics.xlsx')
+fbanalytics = pd.ExcelFile(r'Datos\Facebook_Analytics.xlsx')
 
 
 visitasf     = pd.read_excel(fbanalytics,sheet_name='Visitas a la página')
@@ -46,7 +47,7 @@ mensajesf    = pd.read_excel(fbanalytics,sheet_name='Mensajes enviados')
 
 # lectura Píxel Analytics
 
-pixel = pd.ExcelFile(r'C:\Users\nurit\Dropbox\Estadísticas EBA Nuria\Mi trabajo\Píxel_Analytics.xlsx')
+pixel = pd.ExcelFile(r'Datos\Píxel_Analytics.xlsx')
 
 visitasp   = pd.read_excel(pixel,sheet_name='Visitas a la página')
 ingresos   = pd.read_excel(pixel,sheet_name='Ingresos')
@@ -56,7 +57,7 @@ demogrp    = pd.read_excel(pixel,sheet_name='Datos demográficos')
 
 # lectura Wordpress Catálogo EBA
 
-Wcatalogo = pd.ExcelFile(r'C:\Users\nurit\Dropbox\Estadísticas EBA Nuria\Mi trabajo\Wordpress_Catálogo_EBA.xlsx')
+Wcatalogo = pd.ExcelFile(r'Datos\Wordpress_Catálogo_EBA.xlsx')
 
 traficoc     = pd.read_excel(Wcatalogo,sheet_name='Tráfico')
 paginasc     = pd.read_excel(Wcatalogo,sheet_name='Entradas y páginas')
@@ -68,7 +69,7 @@ tiendac      = pd.read_excel(Wcatalogo,sheet_name='Tienda')
 
 # lectura Wordpress Tienda EBA
 
-Wtienda = pd.ExcelFile(r'C:\Users\nurit\Dropbox\Estadísticas EBA Nuria\Mi trabajo\Wordpress_Tienda_EBA.xlsx')
+Wtienda = pd.ExcelFile(r'Datos\Wordpress_Tienda_EBA.xlsx')
 
 traficot     = pd.read_excel(Wtienda,sheet_name='Tráfico')
 paginast     = pd.read_excel(Wtienda,sheet_name='Entradas y páginas')
