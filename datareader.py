@@ -4,16 +4,18 @@ import pandas as pd
 
 # lectura Google Analytics Catálogo EBA
 
-GAcatagolo = pd.ExcelFile(r'C:\Users\nurit\Dropbox\Estadísticas EBA Nuria\Mi trabajo\Google_Analytics-Catálogo_EBA.xlsx')
+def cargarGA():
 
-generalc         = pd.read_excel(GAcatagolo,sheet_name='Visión general')
-usuariosActivosc = pd.read_excel(GAcatagolo,sheet_name='Usuarios activos')
-nuevovsrecuc     = pd.read_excel(GAcatagolo,sheet_name='Nuevos vs. recu')
-frecc            = pd.read_excel(GAcatagolo,sheet_name='Frecuencia y asiduidad')
-interc           = pd.read_excel(GAcatagolo,sheet_name='Interacción')
-demogrc          = pd.read_excel(GAcatagolo,sheet_name='Datos demográficos')
-ubic             = pd.read_excel(GAcatagolo,sheet_name='Ubicación')
-tvidac           = pd.read_excel(GAcatagolo,sheet_name='Valor tiempo de vida cliente')
+    GAcatagolo = pd.ExcelFile(r'Datos\Google_Analytics-Catálogo_EBA.xlsx')
+
+    generalc         = pd.read_excel(GAcatagolo,sheet_name='Visión general')
+    usuariosActivosc = pd.read_excel(GAcatagolo,sheet_name='Usuarios activos')
+    nuevovsrecuc     = pd.read_excel(GAcatagolo,sheet_name='Nuevos vs. recu')
+    frecc            = pd.read_excel(GAcatagolo,sheet_name='Frecuencia y asiduidad')
+    interc           = pd.read_excel(GAcatagolo,sheet_name='Interacción')
+    demogrc          = pd.read_excel(GAcatagolo,sheet_name='Datos demográficos')
+    ubic             = pd.read_excel(GAcatagolo,sheet_name='Ubicación')
+    tvidac           = pd.read_excel(GAcatagolo,sheet_name='Valor tiempo de vida cliente')
 
 
 # lectura Google Analytics Tienda EBA
