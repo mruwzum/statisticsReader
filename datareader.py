@@ -17,14 +17,10 @@ def loadGAcatalogo():
     ubic             = pd.read_excel(GAcatagolo,sheet_name='Ubicación')
     tvidac           = pd.read_excel(GAcatagolo,sheet_name='Valor tiempo de vida cliente')
 
-    return generalc
-    return usuariosActivosc
-    return nuevovsrecuc
-    return frecc
-    return interc
-    return demogrc
-    return ubic
-    return tvidac
+    listadelistas = [generalc, usuariosActivosc, nuevovsrecuc, frecc, interc, demogrc, ubic, tvidac]
+
+    return listadelistas
+        
 
 
 # lectura Google Analytics Tienda EBA

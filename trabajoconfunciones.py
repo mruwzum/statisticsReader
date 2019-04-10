@@ -6,4 +6,4 @@ import sys
 
 dataGAC=dr.loadGAcatalogo()
 
-print(dataGAC.generalc.columns)
+print(dataGAC.listadelistas)
