@@ -2,12 +2,9 @@ import numpy as np
 import pandas as pd 
 
 
-def loadData():
+# lectura Google Analytics Catálogo EBA
 
-
- # lectura Google Analytics Catálogo EBA
-
-   def loadGAcatalogo():
+def loadGAcatalogo():
 
     GAcatagolo = pd.ExcelFile(r'Datos\Google_Analytics-Catálogo_EBA.xlsx')
 
@@ -21,9 +18,9 @@ def loadData():
     tvidac           = pd.read_excel(GAcatagolo,sheet_name='Valor tiempo de vida cliente')
 
 
- # lectura Google Analytics Tienda EBA
+# lectura Google Analytics Tienda EBA
 
-   def loadGAtienda():
+def loadGAtienda():
 
     GAtienda = pd.ExcelFile(r'Datos\Google_Analytics-Catálogo_EBA.xlsx')
 
@@ -37,9 +34,9 @@ def loadData():
     tvidat           = pd.read_excel(GAtienda,sheet_name='Valor tiempo de vida cliente')
 
 
- # lectura Facebook Analytics
+# lectura Facebook Analytics
 
-   def loadFBanalytics():
+def loadFBanalytics():
 
     fbanalytics = pd.ExcelFile(r'Datos\Facebook_Analytics.xlsx')
 
@@ -52,10 +49,9 @@ def loadData():
     mensajesf    = pd.read_excel(fbanalytics,sheet_name='Mensajes enviados')
 
 
+# lectura Píxel Analytics
 
- # lectura Píxel Analytics
-
-   def loadPixel():
+def loadPixel():
 
     pixel = pd.ExcelFile(r'Datos\Píxel_Analytics.xlsx')
 
@@ -65,9 +61,9 @@ def loadData():
     demogrp    = pd.read_excel(pixel,sheet_name='Datos demográficos')
 
 
- # lectura Wordpress Catálogo EBA
+# lectura Wordpress Catálogo EBA
 
-   def loadWcatalogo():
+def loadWcatalogo():
 
     Wcatalogo = pd.ExcelFile(r'Datos\Wordpress_Catálogo_EBA.xlsx')
 
@@ -79,10 +75,9 @@ def loadData():
     tiendac      = pd.read_excel(Wcatalogo,sheet_name='Tienda')
 
 
- # lectura Wordpress Tienda EBA
+# lectura Wordpress Tienda EBA
 
-
-   def loadWtienda():
+def loadWtienda():
 
     Wtienda = pd.ExcelFile(r'Datos\Wordpress_Tienda_EBA.xlsx')
 
