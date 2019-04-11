@@ -6,7 +6,7 @@ import pandas as pd
 
 def loadGAcatalogo():
 
-    GAcatagolo = pd.ExcelFile(r'Datos\Google_Analytics-Catálogo_EBA.xlsx')
+    GAcatagolo = pd.ExcelFile(r'Datos/Google_Analytics-Catálogo_EBA.xlsx')
 
     generalc         = pd.read_excel(GAcatagolo,sheet_name='Visión general')
     usuariosActivosc = pd.read_excel(GAcatagolo,sheet_name='Usuarios activos')
@@ -17,9 +17,9 @@ def loadGAcatalogo():
     ubic             = pd.read_excel(GAcatagolo,sheet_name='Ubicación')
     tvidac           = pd.read_excel(GAcatagolo,sheet_name='Valor tiempo de vida cliente')
 
-    listadelistas = [generalc, usuariosActivosc, nuevovsrecuc, frecc, interc, demogrc, ubic, tvidac]
+    elemGAc = [generalc, usuariosActivosc, nuevovsrecuc, frecc, interc, demogrc, ubic, tvidac]
 
-    return listadelistas
+    return elemGAc
         
 
 
@@ -38,6 +38,10 @@ def loadGAtienda():
     ubit             = pd.read_excel(GAtienda,sheet_name='Ubicación')
     tvidat           = pd.read_excel(GAtienda,sheet_name='Valor tiempo de vida cliente')
 
+    elemGAt = [generalt, usuariosActivost, nuevovsrecut, frect, intert, demogrt, ubit, tvidat]
+
+    return elemGAt
+
 
 # lectura Facebook Analytics
 
@@ -53,6 +57,10 @@ def loadFBanalytics():
     comentariosf = pd.read_excel(fbanalytics,sheet_name='Comentarios en las publicacione')
     mensajesf    = pd.read_excel(fbanalytics,sheet_name='Mensajes enviados')
 
+    elemFB = [visitasf, retencionf, postreacf, reacf, compartidof, comentariosf, mensajesf]
+
+    return elemFB
+
 
 # lectura Píxel Analytics
 
@@ -64,6 +72,10 @@ def loadPixel():
     ingresos   = pd.read_excel(pixel,sheet_name='Ingresos')
     retencionp = pd.read_excel(pixel,sheet_name='Retención de usuarios')
     demogrp    = pd.read_excel(pixel,sheet_name='Datos demográficos')
+
+    elemP = [visitasp, ingresos, retencionp, demogrp]
+
+    return elemP
 
 
 # lectura Wordpress Catálogo EBA
@@ -79,6 +91,10 @@ def loadWcatalogo():
     referenciasc = pd.read_excel(Wcatalogo,sheet_name='Referencias')
     tiendac      = pd.read_excel(Wcatalogo,sheet_name='Tienda')
 
+    elemWc = [traficoc, paginasc, paisesc, clicsc, referenciasc, tiendac]
+
+    return elemWc
+
 
 # lectura Wordpress Tienda EBA
 
@@ -92,3 +108,7 @@ def loadWtienda():
     clicst       = pd.read_excel(Wtienda,sheet_name='Clics')
     referenciast = pd.read_excel(Wtienda,sheet_name='Referencias')
     tiendat      = pd.read_excel(Wtienda,sheet_name='Tienda')
+
+    elemWt = [traficot, paginast, paisest, clicst, referenciast, tiendat]
+
+    return elemWt
