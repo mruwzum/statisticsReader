@@ -1,6 +1,6 @@
 import numpy as np 
 import pandas as pd 
-import datareaderMiguel as dr
+import datareader as dr
 import os
 import sys
 
