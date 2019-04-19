@@ -9,6 +9,7 @@ from matplotlib import pyplot as plt
 
 dataGAc=dr.loadGAcatalogo()
 
+
 #hoja "visión general" de GA catálogo
 vg = dataGAc[0]
 nombres = vg.columns
@@ -18,31 +19,36 @@ print(vg)
 print("------------")
 
 #quiero tener los elementos que me interesen de la hoja por columnas en variables
+#los voy a tener por una parte en array de solo valores y por otra en una lista encabezada por el nombre
 vgnumpy = np.array(vg)
 
 #Usuarios
-u = vgnumpy[:,1]
-usuarios = u.tolist()
-usuarios.insert(0,nombres[1])
+usuarios = vgnumpy[:,1]
+usuarioss = usuarios.tolist()
+usuarioss.insert(0,nombres[1])
 
-print(usuarios)
+print(usuarioss)
 
 #Usuarios nuevos
-un = vgnumpy[:,2]
-usuariosnuevos = un.tolist()
-usuariosnuevos.insert(0,nombres[2])
+usuariosnuevos = vgnumpy[:,2]
+usuariosnuevoss = usuariosnuevos.tolist()
+usuariosnuevoss.insert(0,nombres[2])
 
-print(usuariosnuevos)
+print(usuariosnuevoss)
 
+#Sesiones
+sesiones = vgnumpy[:,3]
+sesioness = sesiones.tolist()
+sesioness.insert(0,nombres[3])
 
-#intento de hacerlo de manera general con for
+print(sesioness)
 
+#Número de visitas a página
+nvisitas = vgnumpy[:,4]
+nvisitass = nvisitas.tolist()
+nvisitass.insert(0,nombres[4])
 
-
-
-
-
-
+print(nvisitass)
 
 
 
