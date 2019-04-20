@@ -261,6 +261,147 @@ mensajess.insert(0,nombresFBm[1])
 
 print(mensajess)
 
+#Usuarios únicos (texter)
+texter = mennumpy[:,2]
+texterr = texter.tolist()
+texterr.insert(0,nombresFBm[2])
+
+print(texterr)
+
+
+
+#############################################################
+
+dataPixel = dr.loadPixel()
+
+#esto me imprime todas las hojas del Pixel Analytics separadas por ---------
+
+print("Pixel Analytics")
+
+for i in range(len(dataPixel)):
+    print(dataPixel[i])
+    print("-----------------------------------------------------------------------------------------------")
+
+#hoja "visitas a la página" de Pixel Analytics
+visitasp = dataPixel[0]
+nombresp = visitasp.columns
+
+print("Visitas a la página")
+print(visitasp)
+print("------------")
+
+#quiero tener los elementos que me interesen de la hoja por columnas en variables
+#los voy a tener por una parte en array de solo valores y por otra en una lista encabezada por el nombre
+vispnumpy = np.array(visitasp)
+
+#Número de visitas
+nvisitasp = vispnumpy[:,1]
+nvisitassp = nvisitasp.tolist()
+nvisitassp.insert(0,nombresp[1])
+
+print(nvisitassp)
+
+#Usuarios únicos (visitantes)
+visitantesp = vispnumpy[:,2]
+visitantessp = visitantesp.tolist()
+visitantessp.insert(0,nombresp[2])
+
+print(visitantessp)
+
+#Sesiones
+sesionesp = vispnumpy[:,4]
+sesionessp = sesionesp.tolist()
+sesionessp.insert(0,nombresp[4])
+
+print(sesionessp)
+
+
+
+######################################################################
+
+dataWc=dr.loadWcatalogo()
+
+#esto me imprime todas las hojas del W Catálogo separadas por ---------
+
+print("Wordpress Catálogo")
+
+for i in range(len(dataWc)):
+    print(dataWc[i])
+    print("-----------------------------------------------------------------------------------------------")
+
+
+#hoja "trafico" de W catálogo
+traficoc = dataWc[0]
+nombresWc = traficoc.columns
+
+print("Tráfico")
+print(traficoc)
+print("------------")
+
+#quiero tener los elementos que me interesen de la hoja por columnas en variables
+#los voy a tener por una parte en array de solo valores y por otra en una lista encabezada por el nombre
+tracnumpy = np.array(traficoc)
+
+#Visitas
+visitasWc = tracnumpy[:,1]
+visitassWc = visitasWc.tolist()
+visitassWc.insert(0,nombresWc[1])
+
+print(visitassWc)
+
+#Visitantes
+visitantesWc = tracnumpy[:,1]
+visitantessWc = visitantesWc.tolist()
+visitantessWc.insert(0,nombresWc[2])
+
+print(visitantessWc)
+
+
+
+######################################################################
+
+dataWt=dr.loadWtienda()
+
+#esto me imprime todas las hojas del W Catálogo separadas por ---------
+
+print("Wordpress Tienda")
+
+for i in range(len(dataWt)):
+    print(dataWt[i])
+    print("-----------------------------------------------------------------------------------------------")
+
+
+#hoja "trafico" de W catálogo
+traficot = dataWt[0]
+nombresWt = traficot.columns
+
+print("Tráfico")
+print(traficot)
+print("------------")
+
+#quiero tener los elementos que me interesen de la hoja por columnas en variables
+#los voy a tener por una parte en array de solo valores y por otra en una lista encabezada por el nombre
+tratnumpy = np.array(traficot)
+
+#Visitas
+visitasWt = tratnumpy[:,1]
+visitassWt = visitasWt.tolist()
+visitassWt.insert(0,nombresWt[1])
+
+print(visitassWt)
+
+#Visitantes
+visitantesWt = tratnumpy[:,1]
+visitantessWt = visitantesWt.tolist()
+visitantessWt.insert(0,nombresWt[2])
+
+print(visitantessWt)
+
+
+
+
+
+
 
 
 
