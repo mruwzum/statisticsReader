@@ -70,3 +70,16 @@ print('Podemos observar que hay una relación lineal entre el número de visitas
 rho = stats.pearsonr(facebook['Visitantes'],facebook['Número de visitas'])
 
 print('El coeficiente de correlación de Pearson es ',rho[0], ' con un p-valor de ', rho[1])
+print('')
+print('Las variables están claramente correladas directamente')
+print('Planteamos la regresión lineal con los visitantes como variable explicativa, y el número de visitas como variable respuesta')
+#regresión lineal simple
+regr = stats.linregress(facebook['Número de visitas'].astype(float),facebook['Visitantes'].astype(float))
+print('Mi modelo es: ', "visitas = %f + %f*visitantes" % (regr.intercept, regr.slope))
+print('Observemos la bondad del ajuste: ', "R-cuadrado = %f" % regr.rvalue**2)
+print('Mi modelo explica el 88% de la variabilidad de las visitas')
+#Gráfica de los datos con la recta de regresión
+plt.plot(facebook['Visitantes'],facebook['Número de visitas'], 'o', label='original data') 
+plt.plot(facebook['Visitantes'], regr.intercept + regr.slope*facebook['Visitantes'], 'r', label='fitted line')
+plt.legend()
+plt.show()
