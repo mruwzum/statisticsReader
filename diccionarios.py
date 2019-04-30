@@ -56,7 +56,6 @@ def diccionarioFB():
     return facebook
 
 
-
 def diccionarioGAcatalogo():
     #Leo el excel Google Analytics catálogo
     dataGAc=dr.loadGAcatalogo()
@@ -69,13 +68,13 @@ def diccionarioGAcatalogo():
     usuariosnuevosGAc = visionc[:,2]
     sesionesGAc = visionc[:,3]
     nvisitasGAc = visionc[:,4]
-    porcentajereboteGAc = visionc[:,6]
+    tasareboteGAc = visionc[:,6]
     duracionmediasesionGAc = visionc[:,7]
 
 
     #Diccionario
     gaCatalogo = {'Usuarios' : usuariosGAc, 'Usuarios nuevos' : usuariosnuevosGAc, 'Sesiones' : sesionesGAc, 
-              'Número de visitas' : nvisitasGAc, 'Porcentaje de rebote' : porcentajereboteGAc, 
+              'Número de visitas' : nvisitasGAc, 'Tasa de rebote' : tasareboteGAc, 
               'Duración media de la sesión' : duracionmediasesionGAc}
     
     return gaCatalogo
@@ -105,9 +104,8 @@ def diccionarioGAtienda():
     return gaCatalogo
 
 
-
 def diccionarioPixel():
-    #Leo el excel Google Analytics catálogo
+    #Leo el excel Pixel Analytics
     dataPixel=dr.loadPixel()
 
     #Hoja "Visitas a la página" de Pixel Analytics
@@ -128,4 +126,53 @@ def diccionarioPixel():
     return pixel
 
 
+def diccionarioWcatalogo():
+    #Leo el excel Wordpress catálogo
+    dataWc = dr.loadWcatalogo()
+
+    #Hoja "Tráfico" de Wordpress catálogo
+    traficoc = dataWc[0]
+    traficoc = np.array(traficoc)
+    #Defino las variables que me interesan de esta hoja
+    nvisitasWc = traficoc[:,1]
+    nvisitantesWc = traficoc[:,2]
     
+    #Hoja "Tienda" de Wordpress catálogo
+    tiendac = dataWc[5]
+    tiendac = np.array(tiendac)
+    #Defino las variables que me interesan de esta hoja
+    ventasbrutasc = tiendac[:,1]
+    ventasnetasc = tiendac[:,2]
+
+
+    #Diccionario
+    wCatalogo = {'Número de visitas' : nvisitasWc, 'Visitantes' : nvisitantesWc, 
+             'Ventas brutas' : ventasbrutasc, 'Ventas netas' : ventasnetasc}
+    
+    return wCatalogo
+
+
+def diccionarioWtienda():
+    #Leo el excel Wordpress tienda
+    dataWt = dr.loadWtienda()
+
+    #Hoja "Tráfico" de Wordpress tienda
+    traficot = dataWt[0]
+    traficot = np.array(traficot)
+    #Defino las variables que me interesan de esta hoja
+    nvisitasWt = traficot[:,1]
+    nvisitantesWt = traficot[:,2]
+    
+    #Hoja "Tienda" de Wordpress tienda
+    tiendat = dataWt[5]
+    tiendat = np.array(tiendat)
+    #Defino las variables que me interesan de esta hoja
+    ventasbrutast = tiendat[:,1]
+    ventasnetast = tiendat[:,2]
+
+
+    #Diccionario
+    wTienda = {'Número de visitas' : nvisitasWt, 'Visitantes' : nvisitantesWt, 
+             'Ventas brutas' : ventasbrutast, 'Ventas netas' : ventasnetast}
+    
+    return wTienda

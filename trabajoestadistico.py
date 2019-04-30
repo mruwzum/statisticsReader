@@ -11,10 +11,15 @@ facebook = dc.diccionarioFB()
 gaCatalogo = dc.diccionarioGAcatalogo()
 gaTienda = dc.diccionarioGAtienda()
 pixel = dc.diccionarioPixel()
+wCatalogo = dc.diccionarioWcatalogo()
+wTienda = dc.diccionarioWtienda()
+
+
 
 print(gaTienda['Usuarios nuevos'])
 print(gaCatalogo['Tasa de rebote'])
 print(pixel['Sesiones'])
+print(wTienda['Ventas netas'])
 
 #ESTADISTICAS SOBRE FACEBOOK
 #Estudio las visitas (modelo lineal simple)
