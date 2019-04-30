@@ -4,16 +4,18 @@ import datareader as dr
 import os
 import sys
 
+#por lo pronto voy a cargar las vbles que creo convenientes. ya cuando las estudie meteré algo más si veo bien
+
 def diccionarioFB():
     #Leo el excel FBAnalytics
     dataFB = dr.loadFBanalytics()
 
     #Hoja "Visitas a la página" de FBAnalytics
-    visit = dataFB[0]
-    visit = np.array(visit)
+    visitf = dataFB[0]
+    visitf = np.array(visitf)
     #Defino las variables que me interesan de esta hoja
-    nvisitasFB = visit[:,1]
-    nvisitantesFB = visit[:,2]
+    nvisitasFB = visitf[:,1]
+    nvisitantesFB = visitf[:,2]
 
     #Hoja "Reacciones a las publicaciones" de FBAnalytics
     reac = dataFB[3]
@@ -54,25 +56,76 @@ def diccionarioFB():
     return facebook
 
 
+
 def diccionarioGAcatalogo():
     #Leo el excel Google Analytics catálogo
     dataGAc=dr.loadGAcatalogo()
 
     #Hoja "Visión general" de GAcatalogo
-    vision = dataGAc[0]
-    vision = np.array(vision)
+    visionc = dataGAc[0]
+    visionc = np.array(visionc)
     #Defino las variables que me interesan de esta hoja
-    usuariosGAc = vision[:,1]
-    usuariosnuevosGAc = vision[:,2]
-    sesionesGAc = vision[:,3]
-    nvisitasGAc = vision[:,4]
-    porcentajereboteGAc = vision[:,6]
-    duracionmediasesionGac = vision[:,7]
+    usuariosGAc = visionc[:,1]
+    usuariosnuevosGAc = visionc[:,2]
+    sesionesGAc = visionc[:,3]
+    nvisitasGAc = visionc[:,4]
+    porcentajereboteGAc = visionc[:,6]
+    duracionmediasesionGAc = visionc[:,7]
 
 
     #Diccionario
     gaCatalogo = {'Usuarios' : usuariosGAc, 'Usuarios nuevos' : usuariosnuevosGAc, 'Sesiones' : sesionesGAc, 
               'Número de visitas' : nvisitasGAc, 'Porcentaje de rebote' : porcentajereboteGAc, 
-              'Duración media de la sesión' : duracionmediasesionGac}
+              'Duración media de la sesión' : duracionmediasesionGAc}
     
     return gaCatalogo
+
+
+def diccionarioGAtienda():
+    #Leo el excel Google Analytics tienda
+    dataGAt=dr.loadGAtienda()
+
+    #Hoja "Visión general" de GAtienda
+    visiont = dataGAt[0]
+    visiont = np.array(visiont)
+    #Defino las variables que me interesan de esta hoja
+    usuariosGAt = visiont[:,1]
+    usuariosnuevosGAt = visiont[:,2]
+    sesionesGAt = visiont[:,3]
+    nvisitasGAt = visiont[:,4]
+    tasareboteGAt = visiont[:,6]
+    duracionmediasesionGAt = visiont[:,7]
+
+
+    #Diccionario
+    gaCatalogo = {'Usuarios' : usuariosGAt, 'Usuarios nuevos' : usuariosnuevosGAt, 'Sesiones' : sesionesGAt, 
+              'Número de visitas' : nvisitasGAt, 'Tasa de rebote' : tasareboteGAt, 
+              'Duración media de la sesión' : duracionmediasesionGAt}
+    
+    return gaCatalogo
+
+
+
+def diccionarioPixel():
+    #Leo el excel Google Analytics catálogo
+    dataPixel=dr.loadPixel()
+
+    #Hoja "Visitas a la página" de Pixel Analytics
+    visitp = dataPixel[0]
+    visitp = np.array(visitp)
+    #Defino las variables que me interesan de esta hoja
+    nvisitasP = visitp[:,1]
+    nvisitantesP = visitp[:,2]
+    sesionesP = visitp[:,4]
+    duracionmediasesionP = visitp[:,5]
+    tasareboteP = visitp[:,8]
+
+
+    #Diccionario
+    pixel = {'Número de visitas' : nvisitasP, 'Visitantes' : nvisitantesP, 'Sesiones' : sesionesP, 'Tasa de rebote' : tasareboteP, 
+        'Duración media de la sesión' : duracionmediasesionP}
+    
+    return pixel
+
+
+    

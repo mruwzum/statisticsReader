@@ -9,8 +9,12 @@ from matplotlib import pyplot as plt
 #Cargo todos los diccionarios
 facebook = dc.diccionarioFB()
 gaCatalogo = dc.diccionarioGAcatalogo()
+gaTienda = dc.diccionarioGAtienda()
+pixel = dc.diccionarioPixel()
 
-print(gaCatalogo['Usuarios'])
+print(gaTienda['Usuarios nuevos'])
+print(gaCatalogo['Tasa de rebote'])
+print(pixel['Sesiones'])
 
 #ESTADISTICAS SOBRE FACEBOOK
 #Estudio las visitas (modelo lineal simple)
