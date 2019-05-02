@@ -97,11 +97,11 @@ def diccionarioGAtienda():
 
 
     #Diccionario
-    gaCatalogo = {'Usuarios' : usuariosGAt, 'Usuarios nuevos' : usuariosnuevosGAt, 'Sesiones' : sesionesGAt, 
+    gaTienda = {'Usuarios' : usuariosGAt, 'Usuarios nuevos' : usuariosnuevosGAt, 'Sesiones' : sesionesGAt, 
               'Número de visitas' : nvisitasGAt, 'Tasa de rebote' : tasareboteGAt, 
               'Duración media de la sesión' : duracionmediasesionGAt}
     
-    return gaCatalogo
+    return gaTienda
 
 
 def diccionarioPixel():

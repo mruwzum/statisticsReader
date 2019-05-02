@@ -47,8 +47,3 @@ plt.plot(facebook['Visitantes'], regr.intercept + regr.slope*facebook['Visitante
 plt.legend()
 plt.show()
 
-#anova de un factor
-
-#esto es solo para ver cómo se hace el anova. no lo quiero para estas dos variables
-#anova = stats.f_oneway(nvisitantesFB,nvisitantesFB)
-#print(anova)
