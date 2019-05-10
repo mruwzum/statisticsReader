@@ -48,7 +48,7 @@ ttestFBP = stats.ttest_1samp(facebook['Número de visitas']-pixel['Número de vi
 print('Realizamos el test t-Student para la diferencia de las variables procedentes de Facebook y Pixel')
 print(ttestFBP)
 print("Obtenemos un p-valor= %f , por lo que concluyo que tienen la misma media" % ttestFBP.pvalue)
-print('')
+
 
 # GA Catálogo - Wordpress Catálogo
 #print(gaCatalogo['Número de visitas'])
