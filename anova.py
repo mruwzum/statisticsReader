@@ -61,7 +61,7 @@ print("Obtenemos un p-valor= %f , por lo que concuyo que tienen la misma media" 
 print('')
 
 #GA Tienda - Wordpress Tienda
-kwGAWt = stats.kruskal(gaTienda['Número de visitas'], wTienda['Número de visitas'][(len(wTienda['Número de visitas'])-len(gaTienda['Número de visitas'])):])
+kwGAWt = stats.kruskal(gaTienda['Número de visitas'], )
 print('Realizamos el test de Kruskal-Wallis (no se cumple normalidad) para la diferencia de las variables procedentes de GA tienda y Wordpress tienda')
 print(kwGAWt)
 print("Obtenemos un p-valor= %f , por lo que concuyo que tienen la misma media" % kwGAWt.pvalue)
