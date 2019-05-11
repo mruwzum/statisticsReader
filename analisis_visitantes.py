@@ -129,16 +129,25 @@ print("El test anova me da un p-valor= %f , por tanto concluyo que los niveles d
 print('')
 print('Tengo que ver qué nivel del factor tiene mayor media. Tengo que realizar un analisis post hoc')
 print('Test de Tukey para la comparación de medias')
-mc = MultiComparison([facebook['Número de visitas'], gaCatalogo['Usuarios']],['Facebook','GA Catálogo'])
-#result = mc.tukeyhsd(alpha=0.05)
- 
+
+comparar = {'Mes' : ['Oct-18','Nov-18','Dic-18','Ene-19','Feb-19'] ,'Facebook' : facebook['Visitantes'] , 'GA Catálogo' : gaCatalogo['Usuarios'] }
+comparar = pd.DataFrame(comparar)
+longComp = pd.melt(comparar, id_vars= 'Mes', value_vars= ['Facebook','GA Catálogo'], value_name='Visitantes', var_name='Procedencia')
+
+mc = MultiComparison(longComp['Visitantes'], longComp['Procedencia'])
+
+result = mc.tukeyhsd(alpha=0.05)
+#Cannot cast array data from dtype('O') to dtype('float64') according to the rule 'safe' !!!!!!!!!!!!!!! 
+
 #print(result)
 #print(mc.groupsunique)
 
 
+
+
+#plotting a completar
+
 plt.bar(['Oct-18','Nov-18','Dic-18','Ene-19','Feb-19'], gaCatalogo['Usuarios'])
 plt.xlabel('Mes')
-plt.ylabel('Número de visitas')
+plt.ylabel('Visitantes')
 plt.show()
-#print(wCatalogo['Línea temporal'])
-print
