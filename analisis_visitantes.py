@@ -1,7 +1,7 @@
 import pandas as pd
 from statsmodels.stats.anova import AnovaRM
-from statsmodels.stats.multicomp import pairwise_tukeyhsd
-from statsmodels.stats.multicomp import MultiComparison
+from statsmodels.stats.multicomp import (pairwise_tukeyhsd,
+                                         MultiComparison)
 import numpy as np
 import os
 import sys
@@ -133,10 +133,15 @@ print('Test de Tukey para la comparación de medias')
 comparar = {'Mes' : ['Oct-18','Nov-18','Dic-18','Ene-19','Feb-19'] ,'Facebook' : facebook['Visitantes'] , 'GA Catálogo' : gaCatalogo['Usuarios'] }
 comparar = pd.DataFrame(comparar)
 longComp = pd.melt(comparar, id_vars= 'Mes', value_vars= ['Facebook','GA Catálogo'], value_name='Visitantes', var_name='Procedencia')
-
+print(longComp)
+# me da lo mismo que en https://pythonhealthcare.org/2018/04/13/55-statistics-multi-comparison-with-tukeys-test-and-the-holm-bonferroni-method/
+# y no entiendo por qué no funcionaaa
 mc = MultiComparison(longComp['Visitantes'], longComp['Procedencia'])
 
-result = mc.tukeyhsd(alpha=0.05)
+print(mc.tukeyhsd().summary())
+
+
+# result = mc.tukeyhsd(alpha=0.05)
 #Cannot cast array data from dtype('O') to dtype('float64') according to the rule 'safe' !!!!!!!!!!!!!!! 
 
 #print(result)
