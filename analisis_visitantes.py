@@ -154,5 +154,10 @@ print(mc.tukeyhsd().summary())
 
 plt.bar(['Oct-18','Nov-18','Dic-18','Ene-19','Feb-19'], gaCatalogo['Usuarios'])
 plt.xlabel('Mes')
-plt.ylabel('Visitantes')
+plt.ylabel('Visitantes en GA Catálogo')
+plt.show()
+
+plt.bar(['Oct-18','Nov-18','Dic-18','Ene-19','Feb-19'], facebook['Visitantes'])
+plt.xlabel('Mes')
+plt.ylabel('Visitantes en Facebook')
 plt.show()
