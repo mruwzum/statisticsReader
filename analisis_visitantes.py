@@ -136,9 +136,11 @@ longComp = pd.melt(comparar, id_vars= 'Mes', value_vars= ['Facebook','GA Catálo
 print(longComp)
 # me da lo mismo que en https://pythonhealthcare.org/2018/04/13/55-statistics-multi-comparison-with-tukeys-test-and-the-holm-bonferroni-method/
 # y no entiendo por qué no funcionaaa
-mc = MultiComparison(longComp['Visitantes'], longComp['Procedencia'])
 
-print(mc.tukeyhsd().summary())
+mc = MultiComparison(longComp['Visitantes'].values.tolist(), longComp['Procedencia'].values)
+
+print(mc.tukeyhsd())
+
 
 
 # result = mc.tukeyhsd(alpha=0.05)
