@@ -62,10 +62,9 @@ print('No podemos decir que el análisis es robusto para el supuesto de normalid
 print('')
 print('Valores atípicos (outliers): tan sólo tenemos dos')
 print('')
-print('Esfericidad (igualdad de varianzas de las diferencias ente niveles de tratamiento):')
-# tengo que hacer el test de esfericidad de Mauchly con R a través de rpy2
-#no puedo instalarlo
-# voy a continuar a ver qué pasa
+print('Igualdad de varianzas de las diferencias ente niveles de tratamiento:')
+homo = stats.levene(facebook['Número de visitas'], pixel['Número de visitas'], wTienda['Número de visitas'])
+print(homo)
 print('')
 
 print('Realizo ahora la prueba ANOVA-MR')

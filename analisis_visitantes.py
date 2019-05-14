@@ -139,15 +139,13 @@ print(longComp)
 
 mc = MultiComparison(longComp['Visitantes'].values.tolist(), longComp['Procedencia'].values)
 
-print(mc.tukeyhsd())
 
 
 
-# result = mc.tukeyhsd(alpha=0.05)
-#Cannot cast array data from dtype('O') to dtype('float64') according to the rule 'safe' !!!!!!!!!!!!!!! 
 
-#print(result)
-#print(mc.groupsunique)
+result = mc.tukeyhsd(alpha=0.05)
+print(result)
+print(mc.groupsunique)
 
 
 
