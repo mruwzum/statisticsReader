@@ -112,7 +112,7 @@ print('Como he visto que se verifica la igualdad de medias, da igual el represen
 print('Hago la prueba por ejemplo con las muestras procedentes de Facebook y GA Catálogo')
 #The ANOVA test has important assumptions that must be satisfied in order for the associated p-value to be valid.
 #1. The samples are independent. 
-print('Mis muestas procedente de Facebook y GA Catálogo son independientes')
+print('Mis muestras procedente de Facebook y GA Catálogo son independientes')
 print('Se cumple la hipótesis de muestras independientes')
 #2. Each sample is from a normally distributed population.
 print('Vimos que el supuesto de normalidad también se cumple.')

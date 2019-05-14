@@ -143,5 +143,3 @@ plt.bar(['May-18','Jun-18','Jul-18','Ago-18','Sep-18','Oct-18','Nov-18','Dic-18'
 plt.xlabel('Mes')
 plt.ylabel('Número de visitas')
 plt.show()
-#print(wCatalogo['Línea temporal'])
-print

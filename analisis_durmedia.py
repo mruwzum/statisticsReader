@@ -52,3 +52,9 @@ print('')
 print('No es necesario comparar con GA Catálogo')
 print('')
 print('CONCLUSIÓN: No importa la procedencia de la variable, me puedo quedar con cualquiera pues me aporta la misma información')
+
+#plotting
+plt.bar(['Oct-18','Nov-18','Dic-18','Ene-19','Feb-19'], gaCatalogo['Duración media de la sesión'])
+plt.xlabel('Mes')
+plt.ylabel('Visitantes en Facebook')
+plt.show()
