@@ -64,11 +64,13 @@ print('No podemos decir que el análisis es robusto para el supuesto de normalid
 print('')
 print('Valores atípicos (outliers): tan sólo tenemos uno')
 print('')
-print('Esfericidad (igualdad de varianzas de las diferencias ente niveles de tratamiento):')
-# tengo que hacer el test de esfericidad de Mauchly con R a través de rpy2
-#no puedo instalarlo
-# voy a continuar a ver qué pasa
+print('Igualdad de varianzas de las diferencias ente niveles de tratamiento:')
+homo = stats.levene(facebook['Visitantes'], pixel['Visitantes'], wTienda['Visitantes'])
+print(homo)
+print("El test de Levene para la prueba de igualdad de varianzas me da un p-valor = %f " % homo.pvalue)
+print('Se cumple la hipótesis de homocedasticidad (hipótesis fuerte)')
 print('')
+
 
 print('Realizo ahora la prueba ANOVA-MR')
 aovrm = AnovaRM(longRM, 'Visitantes', 'Mes', ['Procedencia'])
@@ -115,9 +117,9 @@ print('Se cumple la hipótesis de muestras independientes')
 #2. Each sample is from a normally distributed population.
 print('Vimos que el supuesto de normalidad también se cumple.')
 #3. Homoscedasticity. 
-homo = stats.levene(facebook['Visitantes'], gaCatalogo['Usuarios'])
-print(homo)
-print("El test de Levene para la prueba de igualdad de varianzas me da un p-valor = %f " % homo.pvalue)
+homo2 = stats.levene(facebook['Visitantes'], gaCatalogo['Usuarios'])
+print(homo2)
+print("El test de Levene para la prueba de igualdad de varianzas me da un p-valor = %f " % homo2.pvalue)
 print('Se cumple la hipótesis de homocedasticidad (hipótesis fuerte)')
 print('')
 print('Realizo la prueba anova para ver contrastar si en mi modelo con variable respuesta Número de visitas existe el efecto del factor procedencia con sus distintos niveles: Facebook, Wordpress Catálogo')
@@ -133,24 +135,15 @@ print('Test de Tukey para la comparación de medias')
 comparar = {'Mes' : ['Oct-18','Nov-18','Dic-18','Ene-19','Feb-19'] ,'Facebook' : facebook['Visitantes'] , 'GA Catálogo' : gaCatalogo['Usuarios'] }
 comparar = pd.DataFrame(comparar)
 longComp = pd.melt(comparar, id_vars= 'Mes', value_vars= ['Facebook','GA Catálogo'], value_name='Visitantes', var_name='Procedencia')
-print(longComp)
-# me da lo mismo que en https://pythonhealthcare.org/2018/04/13/55-statistics-multi-comparison-with-tukeys-test-and-the-holm-bonferroni-method/
-# y no entiendo por qué no funcionaaa
 
 mc = MultiComparison(longComp['Visitantes'].values.tolist(), longComp['Procedencia'].values)
-
-
-
-
-
 result = mc.tukeyhsd(alpha=0.05)
 print(result)
-print(mc.groupsunique)
+print('La tabla nos muestra, aunque diga que no es significativa, que la diferencia mediaGAC - mediaFB = -12.2')
+print('Por lo que concluyo que la media en facebook es más grande')
 
 
-
-
-#plotting a completar
+#plotting 
 
 plt.bar(['Oct-18','Nov-18','Dic-18','Ene-19','Feb-19'], gaCatalogo['Usuarios'])
 plt.xlabel('Mes')
