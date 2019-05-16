@@ -5,6 +5,11 @@ import sys
 import diccionarios as dc
 from scipy import stats
 from matplotlib import pyplot as plt
+from sklearn import linear_model, model_selection, feature_selection, preprocessing
+import statsmodels.formula.api as sm
+from statsmodels.tools.eval_measures import mse
+from statsmodels.tools.tools import add_constant
+from sklearn.metrics import mean_squared_error
 
 #Cargo todos los diccionarios
 facebook = dc.diccionarioFB()
@@ -75,3 +80,13 @@ print('Las variables están correladas directamente')
 print('')
 print('')
 print('Planteamos la regresión lineal:')
+data_to_model = {'Número de visitas' : wCatalogo['Número de visitas'][(len(wCatalogo['Número de visitas'])-len(facebook['Visitantes'])):] , 
+                    'Visitantes' : facebook['Visitantes'] , 'Sesiones' : pixel['Sesiones'] , 
+                    'Duración media de la sesión' : gaCatalogo['Duración media de la sesión'] , 'Tasa de rebote': pixel['Tasa de rebote']}
+#print( pd.DataFrame(data_to_model).describe() )
+data_to_model = pd.DataFrame(data_to_model)
+
+#TRAINING AND TESTING THE MODEL
+X = data_to_model.values.copy()
+#X_train, X_valid, y_train, y_valid = cross_validation.train_test_split( X[:, :-1], X[:, -1], train_size=0.80)
+#ya no existe el modulo cross_validation, ahora es model_selection INDAGAR EN ESTO
