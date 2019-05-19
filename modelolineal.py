@@ -88,10 +88,11 @@ data_to_model = pd.DataFrame(data_to_model)
 #TRAINING AND TESTING THE MODEL
 print('Dividimos la muestra en aprendizaje-validación mediante validación cruzada')
 #We first convert the data frame into an array structure using values.copy() of data_to_model
-X = data_to_model.values.copy()
-print(X)
+variables = data_to_model.values.copy()
+X = variables[:,1:]
+y = variables[:,0]
 #We then use the train_test_split function of model_selection from sklearn to divide the data into training and test set for 60% of the data.
-X_train, X_test, y_train, y_test = model_selection.train_test_split(X[:,1:5], X[:,0], train_size=0.60, random_state=0)
+X_train, X_test, y_train, y_test = model_selection.train_test_split(X, y, train_size=0.60, random_state=0)
 print('La muestra de aprendizaje es:')
 print((X_train, y_train))
 print('La muestra de validación es:')
@@ -99,25 +100,21 @@ print((X_test, y_test))
 
 #LINEAR REGRESSION
 print('Hacemos la regresión lineal y obtengo los coeficientes:')
-# Create linear regression object
-lm = linear_model.LinearRegression()
-# Train the model using the training sets
-lm.fit(X_train, y_train)
-print('Intercept is %f' % lm.intercept_)
-coeficientes = pd.DataFrame(zip(data_to_model.columns,lm.coef_), columns = ['features','estimatedCoefficients'])
+model = linear_model.LinearRegression(fit_intercept=True).fit(X_train, y_train)
+print('Intercept is %f' % model.intercept_)
+coeficientes = pd.DataFrame(zip(data_to_model.columns[1:] , model.coef_), columns = ['features','estimatedCoefficients'])
 print(coeficientes)
 
 #r square
 print('Estudio la bondad de mi ajuste')
-print('Para ello predigo los valores de mi muestra de validación:')
-ypred = lm.predict(X_test)
-print(ypred)
-r2 = r2_score(y_test,ypred)
+r2 = model.score(X_test,y_test)
 print("Obtengo un R^2 con un valor de %f " % r2)
-print("Mi modelo no es válido")
+print("Mi modelo explica la variabilidad del Número de visitas en un 41%")
 
 #mean squared error
+ypred = model.predict(X_test)
 print("Y la media de los cuadrados de los errores es %f" % mean_squared_error(ypred,y_test) )
+print('Es un error bastante grande')
 
 #the actual versus the predicted plot
 fig, ax = plt.subplots(1, 1)
