@@ -6,7 +6,7 @@ import diccionarios as dc
 from scipy import stats
 from matplotlib import pyplot as plt
 from sklearn import linear_model, model_selection, feature_selection
-from sklearn.metrics import mean_squared_error, r2_score
+from sklearn.metrics import mean_squared_error
 
 #Cargo todos los diccionarios
 facebook = dc.diccionarioFB()
@@ -123,6 +123,34 @@ ax.set_xlabel('Actual')
 ax.set_ylabel('Predicted')
 plt.show()
 
-#feature selection
+#FEATURE SELECTION
+
 print('Hacemos selección de variables para ver si mejora mi modelo')
-#feature_selection.SelectKBest(score_func=<function f_classif>, k=4)
+seleccion = feature_selection.RFE(model, n_features_to_select=2, step=1, verbose=0)
+ajuste = seleccion.fit(X_train, y_train)
+print(ajuste.support_) #selected features
+print('Vemos que selecciona las variables Visitantes y Duración media de la sesión')
+nuevareg = ajuste.estimator_  # object. The estimator fit on the reduced dataset.
+print('Intercept is %f' % nuevareg.intercept_)
+print('Los coeficientes de las variables seleccionadas son respectivamente: ')
+print(nuevareg.coef_)
+
+
+Xnew = variables[:,(1,3)]
+#We then use the train_test_split function of model_selection from sklearn to divide the data into training and test set for 60% of the data.
+X_trainN, X_testN, y_trainN, y_testN = model_selection.train_test_split(Xnew, y, train_size=0.60, random_state=0)
+
+
+#r square
+print('Estudio la bondad de mi nuevo ajuste')
+newr2 = nuevareg.score(X_testN,y_testN)
+print("Obtengo un R^2 con un valor de %f " % newr2)
+print("??????????????????")
+
+#mean squared error
+newypred = nuevareg.predict(X_testN)
+print("Y la media de los cuadrados de los errores es %f" % mean_squared_error(newypred,y_testN) )
+print('Es un error incluso más grande')
+
+print('')
+print('CONCLUSIONES: las variables EN CONJUNTO no sirven para explicar el Número de visitas')
