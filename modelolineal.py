@@ -5,11 +5,8 @@ import sys
 import diccionarios as dc
 from scipy import stats
 from matplotlib import pyplot as plt
-from sklearn import linear_model, model_selection, feature_selection, preprocessing
-import statsmodels.formula.api as sm
-from statsmodels.tools.eval_measures import mse
-from statsmodels.tools.tools import add_constant
-from sklearn.metrics import mean_squared_error
+from sklearn import linear_model, model_selection, feature_selection
+from sklearn.metrics import mean_squared_error, r2_score
 
 #Cargo todos los diccionarios
 facebook = dc.diccionarioFB()
@@ -81,12 +78,54 @@ print('')
 print('')
 print('Planteamos la regresión lineal:')
 data_to_model = {'Número de visitas' : wCatalogo['Número de visitas'][(len(wCatalogo['Número de visitas'])-len(facebook['Visitantes'])):] , 
-                    'Visitantes' : facebook['Visitantes'] , 'Sesiones' : pixel['Sesiones'] , 
-                    'Duración media de la sesión' : gaCatalogo['Duración media de la sesión'] , 'Tasa de rebote': pixel['Tasa de rebote']}
+                    'Visitantes' : facebook['Visitantes'] , 
+                    'Sesiones' : pixel['Sesiones'] , 
+                    'Duración media de la sesión' : gaCatalogo['Duración media de la sesión'] , 
+                    'Tasa de rebote': pixel['Tasa de rebote']}
 #print( pd.DataFrame(data_to_model).describe() )
 data_to_model = pd.DataFrame(data_to_model)
 
 #TRAINING AND TESTING THE MODEL
+print('Dividimos la muestra en aprendizaje-validación mediante validación cruzada')
+#We first convert the data frame into an array structure using values.copy() of data_to_model
 X = data_to_model.values.copy()
-#X_train, X_valid, y_train, y_valid = cross_validation.train_test_split( X[:, :-1], X[:, -1], train_size=0.80)
-#ya no existe el modulo cross_validation, ahora es model_selection INDAGAR EN ESTO
+print(X)
+#We then use the train_test_split function of model_selection from sklearn to divide the data into training and test set for 60% of the data.
+X_train, X_test, y_train, y_test = model_selection.train_test_split(X[:,1:5], X[:,0], train_size=0.60, random_state=0)
+print('La muestra de aprendizaje es:')
+print((X_train, y_train))
+print('La muestra de validación es:')
+print((X_test, y_test))
+
+#LINEAR REGRESSION
+print('Hacemos la regresión lineal y obtengo los coeficientes:')
+# Create linear regression object
+lm = linear_model.LinearRegression()
+# Train the model using the training sets
+lm.fit(X_train, y_train)
+print('Intercept is %f' % lm.intercept_)
+coeficientes = pd.DataFrame(zip(data_to_model.columns,lm.coef_), columns = ['features','estimatedCoefficients'])
+print(coeficientes)
+
+#r square
+print('Estudio la bondad de mi ajuste')
+print('Para ello predigo los valores de mi muestra de validación:')
+ypred = lm.predict(X_test)
+print(ypred)
+r2 = r2_score(y_test,ypred)
+print("Obtengo un R^2 con un valor de %f " % r2)
+print("Mi modelo no es válido")
+
+#mean squared error
+print("Y la media de los cuadrados de los errores es %f" % mean_squared_error(ypred,y_test) )
+
+#the actual versus the predicted plot
+fig, ax = plt.subplots(1, 1)
+ax.scatter(y_test, ypred)
+ax.set_xlabel('Actual')
+ax.set_ylabel('Predicted')
+plt.show()
+
+#feature selection
+print('Hacemos selección de variables para ver si mejora mi modelo')
+#feature_selection.SelectKBest(score_func=<function f_classif>, k=4)
