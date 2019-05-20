@@ -44,6 +44,7 @@ print('Mi modelo explica el 88% de la variabilidad de las visitas')
 #Gráfica de los datos con la recta de regresión
 plt.plot(facebook['Visitantes'],facebook['Número de visitas'], 'o', label='original data') 
 plt.plot(facebook['Visitantes'], regr.intercept + regr.slope*facebook['Visitantes'], 'r', label='fitted line')
+#TODO: Mirar la recta b0 +b1*x 
 plt.legend()
 plt.show()
 
