@@ -14,14 +14,6 @@ pixel = dc.diccionarioPixel()
 wCatalogo = dc.diccionarioWcatalogo()
 wTienda = dc.diccionarioWtienda()
 
-
-
-print(gaTienda['Usuarios nuevos'])
-print(gaCatalogo['Tasa de rebote'])
-print(pixel['Sesiones'])
-print(wTienda['Ventas netas'])
-
-#ESTADISTICAS SOBRE FACEBOOK
 #Estudio las visitas (modelo lineal simple)
 #Estudio descriptivo
 plt.scatter(facebook['Visitantes'],facebook['Número de visitas'])
@@ -32,7 +24,7 @@ print('Podemos observar que hay una relación lineal entre el número de visitas
 #Vemos cómo están correladas las variables
 rho = stats.pearsonr(facebook['Visitantes'],facebook['Número de visitas'])
 
-print('El coeficiente de correlación de Pearson es ',rho[0], ' con un p-valor de ', rho[1])
+print('El coeficiente de correlación de Pearson es ',rho[0])
 print('')
 print('Las variables están claramente correladas directamente')
 print('Planteamos la regresión lineal con los visitantes como variable explicativa, y el número de visitas como variable respuesta')
@@ -44,7 +36,7 @@ print('Mi modelo explica el 88% de la variabilidad de las visitas')
 print("error estandarizado %f" % regr.stderr)
 #Gráfica de los datos con la recta de regresión
 plt.plot(facebook['Visitantes'],facebook['Número de visitas'], 'o', label='original data')
-x = facebook['Visitantes'].astype(float)
+x = facebook['Visitantes']
 y = regr.intercept + regr.slope*x
 plt.plot(x, y, 'r', label='fitted line')
 #TODO: Mirar la recta b0 +b1*x 
