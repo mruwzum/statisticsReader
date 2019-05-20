@@ -8,11 +8,6 @@ from matplotlib import pyplot as plt
 
 #Cargo todos los diccionarios
 facebook = dc.diccionarioFB()
-gaCatalogo = dc.diccionarioGAcatalogo()
-gaTienda = dc.diccionarioGAtienda()
-pixel = dc.diccionarioPixel()
-wCatalogo = dc.diccionarioWcatalogo()
-wTienda = dc.diccionarioWtienda()
 
 #Estudio las visitas (modelo lineal simple)
 #Estudio descriptivo
