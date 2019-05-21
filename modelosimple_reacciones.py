@@ -25,7 +25,7 @@ print('Las variables están claramente correladas directamente')
 print('Planteamos la regresión lineal con las reacciones como variable explicativa, y el número de visitas como variable respuesta')
 #regresión lineal simple
 regr = stats.linregress(facebook['Número de visitas'].astype(float),facebook['Reacciones a publicaciones'].astype(float))
-print('Mi modelo es: ', "visitas = %f + %f*reaccines" % (regr.intercept, regr.slope))
+print('Mi modelo es: ', "visitas = %f + %f*reacciones" % (regr.intercept, regr.slope))
 print('Observemos la bondad del ajuste: ', "R-cuadrado = %f" % regr.rvalue**2)
 print('Mi modelo explica el 99% de la variabilidad de las visitas')
 print("error estandarizado %f" % regr.stderr)
